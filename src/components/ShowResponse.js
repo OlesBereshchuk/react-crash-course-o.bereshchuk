@@ -7,7 +7,7 @@ class ShowResponse extends React.Component {
     return (
       <div>
         {response.map(user => (
-            <h1 key={user.id}>{user.name}</h1>
+            <p key={user.id}>{user.name}</p>
         ))}  
       </div>
     );
