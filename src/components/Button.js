@@ -11,15 +11,10 @@ class Button extends React.Component {
     cacheResponse:[],
     showResponse:false,
     showError:false,
-    cache:false
+    cache:false,
   }
 
   fetchData = async () => {
-    // if(this.state.cache){
-    //   this.setState({
-    //     users:cacheResponse
-    //   })
-    // }
     const data = await fetch(
       'https://jsonplaceholder.typicode.com/users'
     );
@@ -62,7 +57,7 @@ class Button extends React.Component {
             <ButtonMarkup name="Отменить запрос" />
           </div>
           {this.state.showResponse && <ShowResponse response={this.state.users} />}
-          {this.state.showError && <Error cacheResponse={this.state.cacheResponse}/> }
+          {this.state.showError && <Error cacheResponse={this.state.cacheResponse} fetchData={this.fetchData}/> }
       </div>
     );
   }
