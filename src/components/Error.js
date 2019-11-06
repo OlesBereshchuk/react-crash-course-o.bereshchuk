@@ -24,7 +24,8 @@ class Error extends React.Component {
         <div>
             {this.state.showCacheResponse && <ShowResponse response={cacheResponse} />} 
             {this.state.showErrorMsg && <h1>Request is failed!!</h1>}         
-            <div className="ButtonWrapper" 
+            <div 
+                className="ButtonWrapper" 
                 onClick={this.retryRequest} 
                 onClick={() => {this.props.fetchData()}}
             >

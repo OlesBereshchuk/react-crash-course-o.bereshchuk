@@ -10,8 +10,7 @@ class Button extends React.Component {
     users:[],
     cacheResponse:[],
     showResponse:false,
-    showError:false,
-    cache:false,
+    showError:false
   }
 
   fetchData = async () => {
@@ -23,8 +22,7 @@ class Button extends React.Component {
       users:users,
       cacheResponse:users,
       showResponse:true,
-      showError:false,
-      cache:true
+      showError:false
     })
   }
 
