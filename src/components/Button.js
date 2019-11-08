@@ -29,7 +29,7 @@ class Button extends React.Component {
     const controller = new window.AbortController();
     controller.abort();
     try {
-      let response = await fetch('https://jsonplaceholder.typicode.com/users', {
+      await fetch('https://jsonplaceholder.typicode.com/users', {
         signal: controller.signal
       });
     } catch(err) {
