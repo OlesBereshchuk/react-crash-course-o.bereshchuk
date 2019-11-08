@@ -4,7 +4,7 @@ class ButtonMarkup extends Component {
   render() {
     const {name} = this.props;
     return (
-        <button>{name}</button>
+        <button onClick={this.props.func}>{name}</button>
     );
   }
 }
