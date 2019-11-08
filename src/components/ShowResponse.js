@@ -1,17 +1,13 @@
 import React from 'react';
 
-class ShowResponse extends React.Component {
-
-  render() {
-    const {response} = this.props;
-    return (
+function ShowResponse(props){
+  return (
       <div>
-        {response.map(user => (
+        {props.response.map(user => (
             <p key={user.id}>{user.name}</p>
         ))}   
-      </div>
-    );
-  }
+    </div>
+    )
 }
 
 export default ShowResponse;
