@@ -12,6 +12,6 @@ function Error(props){
             </div>
         </div>
       )
-}
+} 
 
 export default Error;

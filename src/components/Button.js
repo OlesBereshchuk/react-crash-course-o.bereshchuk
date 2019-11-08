@@ -13,7 +13,7 @@ class Button extends React.Component {
     showError:false
   }
 
-  fetchData = async () => {
+  fetchData = async () => { 
     const data = await fetch(
       'https://jsonplaceholder.typicode.com/users'
     );
