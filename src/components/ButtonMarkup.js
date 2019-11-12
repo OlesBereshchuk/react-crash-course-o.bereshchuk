@@ -1,8 +1,14 @@
 import React from 'react';
 
+import { ButtonFontStyle } from './ButtonFontStyle';
+
 function ButtonMarkup(props){
   return (
-      <button onClick={props.func}>{props.name}</button>
+    <ButtonFontStyle.Consumer>
+      {(value) => (        
+        <button onClick={props.func} style={{fontWeight: value}}>{props.name}</button>
+      )}
+    </ButtonFontStyle.Consumer>
     )
 } 
  
