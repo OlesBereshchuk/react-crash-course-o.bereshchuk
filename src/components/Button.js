@@ -13,14 +13,13 @@ class Button extends React.Component {
     showError:false
   }
 
-  fetchData = async () => {
+  fetchData = async () => { 
     const data = await fetch(
       'https://jsonplaceholder.typicode.com/users'
     );
     const users = await data.json();
     this.setState({
       users:users,
-      cacheResponse:users,
       showResponse:true,
       showError:false
     })
@@ -30,7 +29,7 @@ class Button extends React.Component {
     const controller = new window.AbortController();
     controller.abort();
     try {
-      let response = await fetch('https://jsonplaceholder.typicode.com/users', {
+      await fetch('https://jsonplaceholder.typicode.com/users', {
         signal: controller.signal
       });
     } catch(err) {
@@ -48,14 +47,14 @@ class Button extends React.Component {
   render() {
     return (
       <div>
-          <div className="ButtonWrapper" onClick={this.fetchData}>
-            <ButtonMarkup name="Отправить запрос" />
+          <div className="ButtonWrapper">
+            <ButtonMarkup name="Отправить запрос"  func={this.fetchData}/>
           </div>
-          <div className="ButtonWrapper" onClick={this.abortRequest}>
-            <ButtonMarkup name="Отменить запрос" />
+          <div className="ButtonWrapper">
+            <ButtonMarkup name="Отменить запрос"   func={this.abortRequest} />
           </div>
           {this.state.showResponse && <ShowResponse response={this.state.users} />}
-          {this.state.showError && <Error cacheResponse={this.state.cacheResponse} fetchData={this.fetchData}/> }
+          {this.state.showError && <Error  fetchData={this.fetchData}/> }
       </div>
     );
   }

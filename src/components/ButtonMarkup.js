@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ButtonMarkup extends Component {   
-  render() {
-    const {name} = this.props;
-    return (
-        <button>{name}</button>
-    );
-  }
-}
-
+function ButtonMarkup(props){
+  return (
+      <button onClick={props.func}>{props.name}</button>
+    )
+} 
+ 
 export default ButtonMarkup;
