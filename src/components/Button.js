@@ -1,31 +1,28 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import ButtonMarkup from './ButtonMarkup';
 import ShowResponse from './ShowResponse';
 import Error from './Error';
 import '../components_style/ButtonWrapper.css';
 
-class Button extends React.Component {
+export default function Button () {
 
-  state = {
-    users:[],
-    cacheResponse:[],
-    showResponse:false,
-    showError:false
-  }
+  const [users,setUsers] = useState([]);
 
-  fetchData = async () => { 
+  const [showResponse,setShowResponse] = useState(false);
+
+  const [showError, setShowError] = useState(false);
+
+  const fetchData = async () => { 
     const data = await fetch(
       'https://jsonplaceholder.typicode.com/users'
     );
     const users = await data.json();
-    this.setState({
-      users:users,
-      showResponse:true,
-      showError:false
-    })
+    setUsers(users);
+    setShowError(false);
+    setShowResponse(true);
   }
 
-  abortRequest = async () => {
+  const abortRequest = async () => {
     const controller = new window.AbortController();
     controller.abort();
     try {
@@ -34,30 +31,24 @@ class Button extends React.Component {
       });
     } catch(err) {
       if (err.name === 'AbortError') {
-        this.setState({
-          showResponse:false,
-          showError:true
-        })
+        setShowResponse(false);
+        setShowError(true);
       } else {
         throw err;
       }
     }
   }
-
-  render() {
-    return (
-      <div>
-          <div className="ButtonWrapper">
-            <ButtonMarkup name="Отправить запрос"  func={this.fetchData}/>
-          </div>
-          <div className="ButtonWrapper">
-            <ButtonMarkup name="Отменить запрос"   func={this.abortRequest} />
-          </div>
-          {this.state.showResponse && <ShowResponse response={this.state.users} />}
-          {this.state.showError && <Error  fetchData={this.fetchData}/> }
-      </div>
-    );
-  }
+  
+  return (
+    <div>
+        <div className="ButtonWrapper">
+          <ButtonMarkup name="Отправить запрос"  func={fetchData}/>
+        </div>
+        <div className="ButtonWrapper">
+          <ButtonMarkup name="Отменить запрос"   func={abortRequest} />
+        </div>
+        {showResponse && <ShowResponse response={users} />}
+        {showError && <Error  fetchData={fetchData}/> }
+    </div>
+  );
 }
-
-export default Button;
