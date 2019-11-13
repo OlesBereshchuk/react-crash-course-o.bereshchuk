@@ -7,18 +7,13 @@ const ShowResponseComponent = lazy(() => import('./ShowResponse'));
 
 function Button () {
 
-  // useEffect(
-  //   () => {
-  //     fetchData();
-  //   },[]);
-
   const [users,setUsers] = useState([]);
 
   const [showResponse,setShowResponse] = useState(false);
 
   const [showError, setShowError] = useState(false);
 
-  const fetchData = async () => { 
+  const fetchData = async () => {
     const data = await fetch(
       'https://jsonplaceholder.typicode.com/users'
     );
@@ -47,12 +42,14 @@ function Button () {
   
   return (
     <div>
+
         <div className="ButtonWrapper">
           <ButtonMarkup name="Отправить запрос"  func={fetchData}/>
         </div>
         <div className="ButtonWrapper">
-          <ButtonMarkup name="Отменить запрос"   func={abortRequest} />
+          <ButtonMarkup  name="Отменить запрос" buttonRef={true}  func={abortRequest} />
         </div>
+
         {showResponse && 
           <Suspense fallback={<div>Please, wait......</div>}>  
             {<ShowResponseComponent response={users} />}

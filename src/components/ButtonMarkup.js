@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { withButtonFontStyle } from './ButtonFontStyle';
+import { withButtonFontStyle, ButtonFontColor } from './ButtonFontStyle';
 
-function ButtonMarkup(props){
+function ButtonMarkup(props) {
+  
+  const fontColorByHook = useContext(ButtonFontColor);
+  
   return (      
-        <button onClick={props.func} style={{fontWeight:props.fontWeight}}>{props.name}</button>
-    )
+    <button onClick={props.func} style={{fontWeight:props.fontWeight, color: fontColorByHook}}>{props.name}</button>
+  )
 } 
  
 export default withButtonFontStyle(ButtonMarkup);

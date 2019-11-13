@@ -1,13 +1,19 @@
 import React, { Component, useState } from 'react';
 import Button from './components/Button';
-import { ButtonFontStyle } from './components/ButtonFontStyle';
+import { ButtonFontStyle, ButtonFontColor } from './components/ButtonFontStyle';
 import './App.css';
 
 function App () {
-  const [ButtonFontStyleValue,setButtonFontStyleValue] = useState('light');
+  const [ButtonFontStyleValue,setButtonFontStyleValue] = useState('normal');
+
+  const [ButtonFontColor,setButtonFontColor] = useState('black');
 
   const handleFontStyleByHOC = () => {
     setButtonFontStyleValue('bold');
+  }
+
+  const handleFontStyleByHookContext = () => {
+    setButtonFontColor('red');
   }
 
   return (
@@ -20,7 +26,7 @@ function App () {
             <button onClick={handleFontStyleByHOC} >Change Font Weight(HOC)</button>
           </div>
           <div>
-            <button onClick={handleFontStyleByHOC} >Change Font Weight(UseContext)</button>
+            <button onClick={handleFontStyleByHookContext} >Change Font Weight(UseContext)</button>
           </div>
         </div>
     </div>
