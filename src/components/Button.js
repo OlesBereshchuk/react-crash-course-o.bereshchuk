@@ -52,9 +52,6 @@ function Button () {
         </div>
         <div className="ButtonWrapper">
           <ButtonMarkup name="Отменить запрос"   func={abortRequest} />
-        </div>        
-        <div className="ButtonWrapper">
-          <ButtonMarkup name="Bold(Context)"   func={abortRequest} />
         </div>
         {showResponse && 
           <Suspense fallback={<div>Please, wait......</div>}>  

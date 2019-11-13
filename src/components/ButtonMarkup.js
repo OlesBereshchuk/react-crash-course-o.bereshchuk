@@ -1,15 +1,14 @@
 import React from 'react';
 
-import { ButtonFontStyle } from './ButtonFontStyle';
+import { withButtonFontStyle } from './ButtonFontStyle';
 
 function ButtonMarkup(props){
-  return (
-    <ButtonFontStyle.Consumer>
-      {(value) => (        
-        <button onClick={props.func} style={{fontWeight: value}}>{props.name}</button>
-      )}
-    </ButtonFontStyle.Consumer>
+  console.log(props.fontWeight);
+  const fontStyle = props.fontWeight ? 'light' : 'bold';
+  console.log(fontStyle);
+  return (      
+        <button onClick={props.func} style={{fontWeight:fontStyle}}>{props.name}</button>
     )
 } 
  
-export default ButtonMarkup;
+export default withButtonFontStyle(ButtonMarkup);
