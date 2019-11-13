@@ -2,8 +2,6 @@ import React from 'react';
 
 export const ButtonFontStyle = React.createContext('bold');
 
-export const ButtonFontColor = React.createContext('black');
-
 export function withButtonFontStyle (Component) {
     return class ButtonWrapper extends React.Component{
         render() {

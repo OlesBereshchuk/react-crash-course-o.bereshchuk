@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import Button from './components/Button';
-import { ButtonFontStyle, ButtonFontColor } from './components/ButtonFontStyle';
+import { ButtonFontStyle } from './components/ButtonFontStyle';
+import { BackgroundColor } from './components/ContextHookComponent';
 import './App.css';
 
 function App () {
@@ -17,7 +18,7 @@ function App () {
   }
 
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor : BackgroundColor}}>
         <div>
           <ButtonFontStyle.Provider value={ButtonFontStyleValue}>
             <Button/> 
