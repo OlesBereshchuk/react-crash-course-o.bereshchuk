@@ -4,10 +4,10 @@ import { ButtonFontStyle } from './components/ButtonFontStyle';
 import './App.css';
 
 function App () {
-  const [ButtonFontStyleValue,setButtonFontStyleValue] = useState(true);
+  const [ButtonFontStyleValue,setButtonFontStyleValue] = useState('light');
 
   const handleFontStyleByHOC = () => {
-    setButtonFontStyleValue(!ButtonFontStyleValue);
+    setButtonFontStyleValue('bold');
   }
 
   return (
@@ -16,7 +16,12 @@ function App () {
           <ButtonFontStyle.Provider value={ButtonFontStyleValue}>
             <Button/> 
           </ButtonFontStyle.Provider>
-          <button onClick={handleFontStyleByHOC} >Change Font Weight(HOC)</button>
+          <div>
+            <button onClick={handleFontStyleByHOC} >Change Font Weight(HOC)</button>
+          </div>
+          <div>
+            <button onClick={handleFontStyleByHOC} >Change Font Weight(UseContext)</button>
+          </div>
         </div>
     </div>
   );
